@@ -1,10 +1,20 @@
-document.getElementById("identity").onclick = function () {
-    location.href = "/profile";
-};
-
+if (document.getElementById("scan")){
 document.getElementById("scan").onclick = function () {
     location.href = "/scan";
 };
+}
+
+if (document.getElementById("register")){
+document.getElementById("register").onclick = function () {
+    location.href = "/register";
+};
+}
+
+if (document.getElementById("savedataonregister")) {
+document.getElementById("savedataonregister").onclick = function () {
+    location.href = "/home";
+};
+}
 
 
 if ('serviceWorker' in navigator) {
