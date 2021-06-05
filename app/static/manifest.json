@@ -1,0 +1,22 @@
+{
+    "short-name" : "IOTAHealth",
+    "name" : "IOTAHealth",
+
+    "icons": [
+        {
+          "src": "./img/icon192.png",
+          "type": "image/png",
+          "sizes": "192x192",
+          "purpose": "any"
+        },
+        {
+          "src": "./img/icon512.png",
+          "type": "image/png",
+          "sizes": "512x512",
+          "purpose": "any"
+        }
+      ],
+
+      "start_url": "http://127.0.0.1:8000/static/index.html",
+      "display" : "standalone"
+}
