@@ -1,6 +1,8 @@
 use actix_web::{get, web::{self, route, service}};
 use actix_files as fs;
 mod index;
+mod home;
+mod register;
 /*mod content_loader;
 mod profile;
 mod scan;
@@ -19,7 +21,13 @@ pub fn app_factory(app: &mut web::ServiceConfig) {
   )
 
  .route("/",
- web::get().to(index::index));
+ web::get().to(index::index))
+
+ .route(&base_path.define(String::from("register")),
+  web::get().to(register::register))
+
+  .route(&base_path.define(String::from("home")),
+  web::get().to(home::home));
 
  /*.route(&base_path.define(String::from("profile")),
   web::get().to(profile::profile))

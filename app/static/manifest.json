@@ -17,6 +17,6 @@
         }
       ],
 
-      "start_url": "http://127.0.0.1:8000/static/index.html",
+      "start_url": "./index.html",
       "display" : "standalone"
 }

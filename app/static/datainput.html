@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charSet="UTF-8" />
+    <meta name="viewport" content="width=device-width,
+ initial-scale=1.0" />
+    <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="This is a simple
+ to do app" />
+ <link rel="manifest" href="/static/manifest.json">
+ <link rel="stylesheet" href="/static/css/main.css" type="text/css">
+    <title>Home</title>
+</head>
+
+<body>
+    <h1>Willkommen</h1>
+    
+    <form method="POST">
+    <div class = "pp">
+    <img id = "pictureinput" src = "/static/img/avatar.png" width="200" height="200"/>
+    <input type = "file"> 
+    </div>
+
+    <div class = "input-container">
+        <div class = "input-item">
+            <label for = "name"><b>Vorname und Name</b></label>
+            <input type = "text" name = "name" class = "nameinput" required>
+        </div>
+
+        <br>
+        
+        <div class = "input-item">
+            <label for = "place"><b>Wohnort</b></label>
+            <input type = "text" name = "place" class = "placeinput" required>
+        </div>
+
+        <br>
+
+        <div class = "input-item">
+            <label for = "adress"><b>Straße und Hausnummer</b></label>
+            <input type = "text" name = "adress" class = "adressinput" required>
+        </div>
+
+        <br>
+
+        <div class = "input-item">
+            <label for = "birthplace"><b>Geburtsort</b></label>
+            <input type = "text" name = "birthplace" class = "birthplaceinput" required>
+        </div>
+
+        <br>
+
+        <div class = "input-item">
+            <label for = "birthday"><b>Geburtstag</b></label>
+            <input type = "date" name = "birthday" class = "birthdayinput" required>
+        </div>
+
+        <br>
+
+        <div class = "input-item">
+            <label for = "passnr"><b>Ausweisnummer</b></label>
+            <input type = "text" name = "passnr" class = "passnrinput" required>
+        </div>
+
+        <br>
+
+        <button type = "submit" id = "savedataonregister">Speichern</button>
+
+        
+    </div>
+    </form>
+
+
+
+</body>
+
+
+
+<script type="text/javascript" src = "/static/main.js">
+    
+</script>
+
+
+</html>
