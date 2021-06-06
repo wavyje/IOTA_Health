@@ -360,8 +360,10 @@ dependencies = [
  "actix-rt",
  "actix-web",
  "anyhow",
+ "futures",
  "iota-client",
  "iota-streams",
+ "rand 0.7.3",
  "tokio 1.6.1",
 ]
 
