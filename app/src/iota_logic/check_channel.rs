@@ -1,6 +1,6 @@
-use std::vec;
+use std::{str::FromStr, vec};
 
-use iota_streams::{app::{message::HasLink, transport::tangle::{PAYLOAD_BYTES, TangleAddress, TangleMessage}}, app_channels::{api::tangle::{
+use iota_streams::{app::{message::HasLink, transport::tangle::{PAYLOAD_BYTES, TangleAddress, TangleMessage, MsgId, AppInst}}, app_channels::{api::tangle::{
     Author,
     Subscriber,
 }, message::announce}, core::{
@@ -26,12 +26,31 @@ Result,
 use rand::AsByteSliceMut;
 use core::cell::RefCell;
 
-pub fn importauthor(transport: Rc<RefCell<Client>>) {
-    let mut by: Vec<u8> = vec![0, 0, 58, 47, 120, 58, 119, 0, 79, 216, 180, 153, 240, 29, 0, 29, 81, 180, 45, 74, 233, 147, 206, 71, 249, 164, 160, 38, 241, 184, 42, 139, 248, 129, 1, 1, 5, 117, 116, 102, 45, 56, 0, 0, 0, 0, 0, 0, 4, 66, 1, 235, 155, 80, 152, 94, 166, 21, 204, 213, 56, 210, 19, 246, 132, 161, 63, 179, 223, 82, 124, 132, 239, 204, 84, 232, 35, 203, 94, 126, 164, 80, 125, 
-    0, 0, 0, 0, 0, 0, 0, 0, 82, 59, 121, 27, 25, 229, 255, 34, 176, 98, 69, 107, 1, 235, 155, 80, 152, 94, 166, 21, 204, 213, 56, 210, 19, 246, 132, 161, 63, 179, 223, 82, 124, 132, 239, 204, 84, 232, 35, 203, 94, 126, 164, 80, 125, 1, 1, 82, 59, 121, 27, 25, 229, 255, 34, 176, 98, 69, 107, 103, 241, 227, 173, 208, 7, 160, 192, 231, 47, 21, 155, 12, 221, 147, 213, 221, 177, 48, 229, 165, 200, 49, 74, 244, 140, 180, 164, 89, 95, 228, 220, 0, 0, 1, 1, 235, 155, 80, 152, 94, 166, 21, 204, 213, 56, 210, 19, 246, 132, 161, 63, 179, 223, 82, 124, 132, 239, 204, 84, 232, 35, 203, 94, 126, 164, 80, 125, 82, 59, 121, 27, 25, 229, 255, 34, 176, 98, 69, 107, 0, 0, 0, 0, 0, 0, 0, 2, 198, 221, 31, 159, 199, 206, 87, 58, 123, 180, 209, 0, 185, 200, 135, 19, 208, 161, 103, 198, 78, 145, 114, 163, 12, 222, 34, 115, 62, 126, 
-    115, 0];
+#[tokio::main]
+pub async fn importauthor(transport: Rc<RefCell<Client>>) {
+    let mut by: Vec<u8> = vec![0, 0, 50, 34, 178, 106, 134, 237, 252, 34, 246, 246, 89, 119, 219, 115, 50, 18, 78, 206, 219, 12, 190, 15, 33, 2, 109, 39, 40, 198, 222, 85, 248, 81, 1, 1, 5, 117, 116, 102, 45, 56, 0, 0, 0, 0, 0, 0, 4, 66, 1, 225, 153, 155, 101, 26, 28, 179, 64, 173, 81, 191, 118, 196, 146, 149, 238, 78, 254, 85, 79, 178, 160, 36, 147, 125, 133, 51, 14, 21, 189, 184, 255, 
+    0, 0, 0, 0, 0, 0, 0, 0, 191, 89, 99, 39, 166, 40, 133, 106, 107, 200, 126, 240, 1, 225, 153, 155, 101, 26, 28, 179, 64, 173, 81, 191, 118, 196, 146, 149, 238, 78, 254, 85, 79, 178, 160, 36, 147, 125, 133, 51, 14, 21, 189, 184, 255, 1, 1, 191, 89, 99, 39, 166, 40, 133, 106, 107, 200, 126, 240, 92, 200, 221, 167, 8, 93, 54, 55, 147, 63, 194, 79, 172, 254, 174, 218, 34, 9, 120, 220, 128, 199, 21, 217, 90, 37, 96, 205, 189, 41, 31, 221, 0, 0, 1, 1, 225, 153, 155, 101, 26, 28, 179, 64, 173, 81, 191, 118, 196, 146, 149, 238, 78, 254, 85, 79, 178, 160, 36, 147, 125, 133, 51, 14, 21, 189, 184, 255, 191, 89, 99, 39, 166, 40, 133, 106, 107, 200, 126, 240, 0, 0, 0, 0, 0, 0, 0, 2, 100, 253, 77, 9, 9, 213, 67, 35, 28, 161, 214, 23, 130, 213, 233, 96, 53, 187, 208, 23, 79, 147, 11, 89, 76, 61, 213, 26, 208, 199, 254, 116];
     let a = by.as_byte_slice_mut();
 
-    let author = Author::import(a, "Geheimes Passwort", transport.clone()).unwrap();
+    let mut author = Author::import(a, "Geheimes Passwort", transport.clone()).unwrap();
     println!("Adddesed: {}", &author.channel_address().unwrap());
+
+    //let appinst = author.;
+    //author.send_keyload_for_everyone(TangleAddress::from_base_rel(&appinst,"7a1540ad28ad076dea7f6d25a6018941cba5a5744e189c7088b1a3780f24476d"));
+
+    let app = AppInst::from_str("e1999b651a1cb340ad51bf76c49295ee4efe554fb2a024937d85330e15bdb8ff0000000000000000").unwrap();
+    let msg = MsgId::from_str("bf596327a628856a6bc87ef0").unwrap();
+    let announce_link = TangleAddress::from_base_rel(&app, &msg);
+    println!("Address: {}", &announce_link);
+    
+    let keyload_link = {
+        let (msg, seq)= author.send_keyload_for_everyone(&announce_link).unwrap();
+        let seq = seq.unwrap();
+        println!("  msg => <{}> {:?}", msg.msgid, msg);
+        println!("  seq => <{}> {:?}", seq.msgid, seq);
+        println!();
+        seq
+        };
+    println!("Keyload link: {}", &keyload_link);
+    //println!("AppInst: {} ; Msgid: {}", base, msgid);
 }

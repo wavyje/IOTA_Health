@@ -57,7 +57,7 @@ button:hover {
 }
 
 .button-item {
-    flex: 50%;
+    flex: 100%;
     text-align: center;
     min-width: 35%;
     margin-top: 3%;

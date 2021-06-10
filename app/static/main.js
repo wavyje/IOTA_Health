@@ -16,6 +16,19 @@ document.getElementById("savedataonregister").onclick = function () {
 };
 }
 
+if (document.getElementById("officelogin")){
+    document.getElementById("officelogin").onclick = function () {
+        location.href = "/authenticate";
+    };
+    }
+
+if (document.getElementById("authenticate")){
+    let pw = document.getElementById('authenticate').value;
+    /*document.getElementById("officelogin").onclick = function () {
+        location.href = "/authenticate";
+    };*/
+    }
+
 
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('static/service_worker.js')

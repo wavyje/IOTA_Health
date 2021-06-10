@@ -10,8 +10,8 @@ async fn main() -> std::io::Result<()> {
     
     //For more information on this visit README->chapter: 1) Getting started
     //WARNING: Only uncomment the following line, if you are absolutely sure!!!
-    let transport = create_client();
-    initiate(transport);
+    //let transport = create_client();
+    //initiate(transport);
     //importauthor(transport);
 
 
@@ -19,7 +19,7 @@ async fn main() -> std::io::Result<()> {
         let app = App::new().configure(views::views_factory);
         return app
     })
-        .bind("127.0.0.1:8000")?
+        .bind("localhost:8000")?
         .run()
         .await
 }

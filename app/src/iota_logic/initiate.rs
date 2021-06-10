@@ -58,6 +58,7 @@ pub async fn initiate(transport: Rc<RefCell<Client>>) {
     let announce_link = author.send_announce().unwrap();
     println!("Channel published!");
     println!("Important: Note the adress!!! Channel adress: {}", &announce_link);
+    println!("Base: {} ; MsgId {}", announce_link.base(), announce_link.msgid);
     
     //export author, hash password
     let encrypted_author = author.export("Geheimes Passwort").unwrap();
