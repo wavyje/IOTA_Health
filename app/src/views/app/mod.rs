@@ -2,6 +2,7 @@ use actix_web::{get, web::{self, route, service}};
 use actix_files as fs;
 mod index;
 mod home;
+mod office;
 mod register;
 mod authenticate;
 use authenticate::{authenticate, process_authenticate};
@@ -31,6 +32,9 @@ pub fn app_factory(app: &mut web::ServiceConfig) {
 
   .route(&base_path.define(String::from("home")),
   web::get().to(home::home))
+
+  .route(&base_path.define(String::from("office")),
+  web::get().to(office::office))
 
   .route(&base_path.define(String::from("authenticate")),
   web::get().to(authenticate::authenticate))
