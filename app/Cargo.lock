@@ -364,6 +364,7 @@ dependencies = [
  "iota-client",
  "iota-streams",
  "rand 0.7.3",
+ "serde",
  "tokio 1.6.1",
 ]
 

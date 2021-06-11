@@ -4,6 +4,8 @@ mod index;
 mod home;
 mod register;
 mod authenticate;
+use authenticate::{authenticate, process_authenticate};
+
 /*mod content_loader;
 mod profile;
 mod scan;
@@ -31,8 +33,10 @@ pub fn app_factory(app: &mut web::ServiceConfig) {
   web::get().to(home::home))
 
   .route(&base_path.define(String::from("authenticate")),
-  web::get().to(authenticate::authenticate));
+  web::get().to(authenticate::authenticate))
 
+  .route(&base_path.define(String::from("process_authenticate")),
+  web::post().to(authenticate::process_authenticate));
  /*.route(&base_path.define(String::from("profile")),
   web::get().to(profile::profile))
 

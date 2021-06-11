@@ -20,19 +20,21 @@
     <img id = "icon" src = "/static/img/icon.jpg" width="200" height="200"/>
     </div>
 
+    <form action = "/process_authenticate" method = "POST" enctype= "application/x-www-form-urlencoded">
     <div class = "input-container">
         
     <div class = "input-item">
-        <label for = "authenticate"><b>Bitte geben Sie das zugewiesene Passwort ein</b>
-            <input type = "text" name = "authenticate" id = "authenticate" placeholder = "Passwort">
+        <label for = "authenticate"><h2>Bitte geben Sie das zugewiesene Passwort ein</h2>
+            <input type = "text" name = "password" id = "password" placeholder = "Passwort">
         </label>
     </div>
-
+    
         <div class = "button-item">
-            <button id = "officepassword">Einloggen</button>
+            <button type = "submit" id = "officepassword">Einloggen</button>
         </div>
         
     </div>
+    </form>
 </body>
 
 

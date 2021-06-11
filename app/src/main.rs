@@ -19,7 +19,8 @@ async fn main() -> std::io::Result<()> {
         let app = App::new().configure(views::views_factory);
         return app
     })
-        .bind("localhost:8000")?
+        //192.168.0.42
+        .bind("192.168.0.42:8080")?
         .run()
         .await
 }
